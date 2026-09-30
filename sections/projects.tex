@@ -1,13 +1,14 @@
 \cvsection[0.8]{项目经历}
 
-\cvprojectheading{OpenCurVe Resume}{LaTeX, 开源项目}{2025.06--2025.09}
-\cvtagline{一个基于 CurVe 的开源、高度可定制单页 LaTeX 简历模板。}
-\cvdescription{用于演示简历内容、版式和 PDF 导出流程的模块化实现，支持按模块维护并快速替换为个人经历。}
-\cvitem{\textbf{模块化：}将教育背景、实习经历、项目经历与技能拆分为独立文件，正文内容和视觉样式分离。}
-\cvitem{\textbf{可定制：}颜色、字体、页边距、章节标题与条目样式集中定义在 \texttt{open-curve.sty} 中。}
-\cvitem{\textbf{可移植：}优先使用 Times New Roman 与微软雅黑，字体不可用时自动回退到 TeX Live 自带字体。}
+\cvprojectheading{Poirot：可持久化的深度研究 Agent 内核}{Python, LangGraph, SQLite, RAG, Docker}{\textbf{2026.08--2026.10}}
+\cvdescription{开发面向长期研究任务的 Agent 系统，基于 LangGraph 管理推理与工具调用，并提供可恢复会话、专家协作、安全文件访问和历史报告检索；支持 CLI/TUI 交互。}
+\cvitem{\textbf{ReAct 运行架构：}基于 LangGraph 实现 React 推理与工具调用主流程，将记忆召回、Skill 加载、工具调用检查、循环检测和报告生成等内容封装成 \textbf{22 个可插拔的中间件}；按模型上下文容量动态分配 token 预算，通过压缩或转存历史来支持长任务的持续运行。}
+\cvitem{\textbf{Skill 自进化与评估：}搭建存储、演化、评估\textbf{三层架构}：\textbf{存储层}负责版本存储、质量筛选和按需注入；\textbf{演化层}根据运行指标生成改进版本，经质量评分后决定采用或回退；\textbf{评估层}从任务完成质量和输出要求两方面评估效果。}
+\cvitem{\textbf{多 Agent 专家协作：}通过 MCP 接入 Codex、Claude 等专家 Agent，\textbf{按任务委派并汇总结果}，为每次调用保留\textbf{独立上下文}；记录专家表现，用评估结果调整协作策略，效果退化时回退版本。}
+\cvitem{\textbf{沙箱与会话隔离：}提供 \textbf{Local 与 Docker 两种沙箱}，对文件工具统一执行路径校验和读写权限检查；将会话绑定项目目录，恢复或切换会话时同步更新可访问范围，防止文件引用和工具操作越界。}
+\cvitem{\textbf{分层报告与渐进式检索：}将对话保存为\textbf{概览、摘要和对话副本三层报告}；摘要记录每轮对话的要求与实现，并绑定关联对话；先用 \textbf{SQLite FTS5 全文检索}定位摘要，再根据大模型需展开相关知识与对话轮次，减少无关历史进入上下文并保留来源。}
 
-\cvprojectheading[0.8em]{你的项目名称}{Python, LLM, RAG}{2025.01--2025.05}
+\cvprojectheading[0.8em]{你的项目名称}{Python, LLM, RAG}{\textbf{2026.05--2026.07}}
 \cvtagline{一句话概括项目解决的问题、目标用户和核心结果。}
 \cvdescription{补充项目背景、你的职责以及采用该技术方案的原因；内容较长时可以自然换行。}
 \cvitem{突出可验证的技术成果，例如准确率、吞吐量、响应时间、成本或用户规模。}

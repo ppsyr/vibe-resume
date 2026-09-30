@@ -18,6 +18,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[fixed]{fontawesome5}
 \RequirePackage[colorlinks=true,allcolors=black,breaklinks=true]{hyperref}
+\RequirePackage{ragged2e}
 
 % Portable font defaults: use the original fonts when available, otherwise
 % fall back to fonts bundled with a typical TeX Live installation.
@@ -57,7 +58,9 @@
 \definecolor{OpenCurveHeading}{HTML}{173A86}
 \definecolor{OpenCurveMuted}{HTML}{4B5563}
 
-\raggedright
+\justifying
+\setlength{\emergencystretch}{2em}
+\hbadness=10000
 \urlstyle{same}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -113,7 +116,7 @@
       \enspace{\color{OpenCurveMuted}\textbar}\enspace
       \textcolor{OpenCurveHeading}{#3}}%
     \hfil
-    {\color{OpenCurveMuted}#4}%
+    {\color{black}#4}%
   }\par
 }
 
