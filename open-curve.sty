@@ -1,0 +1,144 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{open-curve}[Minimal style for OpenCurVe Resume]
+
+% OpenCurVe Resume requires a Unicode-aware engine.
+\RequirePackage{iftex}
+\ifXeTeX\else
+  \ifLuaTeX\else
+    \PackageError{open-curve}{Please compile with XeLaTeX or LuaLaTeX}{}
+  \fi
+\fi
+
+% CurVe does not define a bibliography title, while ctex checks for one.
+\providecommand{\refname}{References}
+\RequirePackage[fontset=none,scheme=plain]{ctex}
+\RequirePackage{fontspec}
+\RequirePackage[a4paper,left=1.2cm,right=1.2cm,top=1cm,bottom=1cm]{geometry}
+\RequirePackage[dvipsnames,svgnames]{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage[fixed]{fontawesome5}
+\RequirePackage[colorlinks=true,allcolors=black,breaklinks=true]{hyperref}
+
+% Portable font defaults: use the original fonts when available, otherwise
+% fall back to fonts bundled with a typical TeX Live installation.
+\IfFontExistsTF{Times New Roman}{
+  \setmainfont{Times New Roman}
+  \setsansfont{Times New Roman}
+}{
+  \setmainfont{TeX Gyre Termes}
+  \setsansfont{TeX Gyre Termes}
+}
+\IfFontExistsTF{Microsoft YaHei}{
+  \setCJKmainfont{Microsoft YaHei}
+  \setCJKsansfont{Microsoft YaHei}
+  \setCJKmonofont{Microsoft YaHei}
+}{
+  \IfFontExistsTF{PingFang SC}{
+    \setCJKmainfont{PingFang SC}
+    \setCJKsansfont{PingFang SC}
+    \setCJKmonofont{PingFang SC}
+  }{
+    \setCJKmainfont{FandolHei-Regular}[BoldFont=FandolHei-Bold]
+    \setCJKsansfont{FandolHei-Regular}[BoldFont=FandolHei-Bold]
+    \setCJKmonofont{FandolHei-Regular}[BoldFont=FandolHei-Bold]
+  }
+}
+\IfFontExistsTF{TeX Gyre Cursor}{
+  \setmonofont{TeX Gyre Cursor}
+}{
+  \setmonofont{Menlo}
+}
+
+% Global line spacing.
+\linespread{1.3}\selectfont
+
+\definecolor{OpenCurvePrimary}{HTML}{2F6F9F}
+\definecolor{OpenCurveAccent}{HTML}{4F94C4}
+\definecolor{OpenCurveHeading}{HTML}{173A86}
+\definecolor{OpenCurveMuted}{HTML}{4B5563}
+
+\raggedright
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\headerspace}{0pt}
+\headerscale{0.74}
+
+% Header helpers.
+\newcommand{\headeritem}[2]{%
+  \makebox[1.35em][c]{\color{black}#1}\,#2}
+\newcommand{\headerdivider}{%
+  \hspace{0.8em}\textcolor{gray}{\textbar}\hspace{0.8em}}
+\newcommand{\headerlinebreak}{\par\vspace{0.2\baselineskip}}
+
+% Shared section and entry primitives.
+\newcommand{\cvsection}[2][1]{%
+  \par\vspace{#1\baselineskip}%
+  \noindent
+  \vbox{%
+    \hbox to \linewidth{%
+      \hskip1pt%
+      \raisebox{0pt}[1.5ex][.5ex]{%
+        \fontsize{15}{16.8}\selectfont\sffamily\bfseries
+        \textcolor{OpenCurvePrimary}{#2}}%
+      \hfil
+    }%
+    \vskip3.5pt
+    {\color{OpenCurveAccent}%
+      \hrule height 1.5pt width \linewidth}%
+  }%
+  \par\vspace{2pt}%
+}
+
+\newcommand{\cvheading}[3][0.4em]{%
+  \par\nointerlineskip
+  \vspace{#1}%
+  \noindent
+  \hbox to \linewidth{%
+    {\fontsize{10.5}{12.6}\selectfont\sffamily\bfseries
+      \textcolor{OpenCurveHeading}{#2}}%
+    \hfil
+    {\color{OpenCurveMuted}#3}%
+  }\par
+}
+
+% Project title with the stack next to the name and the date aligned right.
+\newcommand{\cvprojectheading}[4][0.4em]{%
+  \par\nointerlineskip
+  \vspace{#1}%
+  \noindent
+  \hbox to \linewidth{%
+    {\fontsize{10.5}{12.6}\selectfont\sffamily\bfseries
+      \textcolor{OpenCurveHeading}{#2}%
+      \enspace{\color{OpenCurveMuted}\textbar}\enspace
+      \textcolor{OpenCurveHeading}{#3}}%
+    \hfil
+    {\color{OpenCurveMuted}#4}%
+  }\par
+}
+
+% A project or internship subtitle with a visible, muted stack divider.
+\newcommand{\cvprojectline}[2]{%
+  {\normalsize\bfseries\textcolor{OpenCurveHeading}{#1}%
+    \enspace{\color{OpenCurveMuted}\textbar}\enspace
+    \textcolor{OpenCurveHeading}{#2}}\par
+  \vspace{0.1em}%
+}
+
+% Black explanatory text below a project title.
+\newcommand{\cvdescription}[1]{%
+  \noindent\textcolor{black}{#1}\par
+  \vspace{0.1em}%
+}
+
+\newcommand{\cvitem}[2][black]{%
+  \par
+  \settowidth{\hangindent}{\textbullet\ }%
+  \hangafter=1\noindent
+  \textcolor{#1}{\textbullet}\ #2\par
+}
+
+\newcommand{\cvtagline}[1]{%
+  {\normalsize\bfseries\textcolor{OpenCurveHeading}{#1}}\par
+  \vspace{0.1em}%
+}

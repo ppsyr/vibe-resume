@@ -1,0 +1,51 @@
+% OpenCurVe Resume
+% Built with Didier Verna's CurVe class; adapted from LianTze Lim's CV example.
+% Compile with XeLaTeX or LuaLaTeX.
+\documentclass[a4paper,skipsamekey,10pt,english]{curve}
+\usepackage{open-curve}
+\usepackage{simpleicons}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+% Personal information: replace the sample values below.
+\leftheader{%
+  {\LARGE\sffamily\bfseries 你的姓名
+    \enspace{\color{OpenCurveMuted}\textbar}\enspace
+    {\large\sffamily\bfseries 预期岗位}}\par\smallskip
+  \normalsize
+  \headeritem{\faPhone}{\href{tel:+8613800000000}{+86 138 0000 0000}}%
+  \headerdivider
+  \headeritem{\faEnvelope[regular]}{\href{mailto:you@example.com}{you@example.com}}%
+  \headerdivider
+  2000年01月%
+  \headerlinebreak
+  \headeritem{\faGithub}{\href{https://github.com/username}{github.com/username}}%
+  {\color{OpenCurveMuted}（开源经历说明）}%
+  \headerlinebreak
+  {\sffamily\bfseries 额外说明：交换经历 / 联培经历}%
+}
+
+% Replace this placeholder with a school logo, portrait, or personal logo.
+% Example: \includegraphics[width=0.72\linewidth]{your-image.png}
+\rightheader{%
+  \centering
+  \fcolorbox{OpenCurveAccent}{white}{%
+    \parbox[c][2.5cm][c]{2.5cm}{%
+      \centering
+      {\Large\color{OpenCurveMuted}\faUser}\par
+      \vspace{0.25em}
+      {\small\sffamily\color{OpenCurveMuted}校徽 / 头像}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\makeheaders[c]
+
+\input{sections/education}
+\input{sections/experience}
+\input{sections/projects}
+\input{sections/skills}
+
+\end{document}

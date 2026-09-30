@@ -1,0 +1,68 @@
+\cvsection[0.45]{实习经历}
+
+% 公司品牌配置集中放在本模块，便于直接替换颜色、Logo 和名称。
+\begingroup
+\definecolor{ByteDanceBlue}{HTML}{3C8CFF}
+\definecolor{ByteDanceTint}{HTML}{EEF5FF}
+\definecolor{HuaweiRed}{HTML}{CF0A2C}
+\definecolor{HuaweiTint}{HTML}{FFF1F3}
+
+% 可选参数控制招牌上方间距；其余参数依次为背景色、品牌色、
+% Logo、公司及部门名称、右侧职位与日期。
+\newcommand{\companybanner}[6][0.4em]{%
+  \par\nointerlineskip
+  \vspace{#1}%
+  \begin{tcolorbox}[
+    enhanced,colback=#2,frame hidden,boxrule=0pt,
+    overlay={%
+      \begin{scope}
+        \clip[rounded corners=1.5mm]
+          (frame.south west) rectangle (frame.north east);
+        \fill[#3]
+          (frame.south west) rectangle ([xshift=3pt]frame.north west);
+      \end{scope}%
+      \node[anchor=center,inner sep=0pt]
+        at ([xshift=17.25pt]frame.west) {#4};%
+    },
+    arc=1.5mm,outer arc=1.5mm,boxsep=0pt,
+    left=6pt,right=6pt,top=0pt,bottom=0pt,
+    height=22pt,valign=center,
+    width=\linewidth,before skip=0pt,after skip=0pt]
+    \makebox[\linewidth]{%
+      \hspace{2.8em}%
+      {\fontsize{10.5}{12.6}\selectfont\sffamily\bfseries #5}%
+      \hfill
+      {\fontsize{10.5}{12.6}\selectfont\sffamily
+        \color{OpenCurveMuted}\mbox{#6}}%
+    }%
+  \end{tcolorbox}%
+}
+
+% 主要贡献下的二级要点：首行缩进 0.65em，续行悬挂缩进 1.6em。
+\newcommand{\companyitem}[2]{%
+  \par\hangindent=1.6em\hangafter=1\noindent
+  \hspace{0.65em}\textcolor{#1}{\textbullet}\ #2\par
+}
+
+\companybanner{ByteDanceTint}{ByteDanceBlue}{%
+  \textcolor{ByteDanceBlue}{\fontsize{18}{18}\selectfont\faBuilding}%
+}{字节跳动\,·\,AI 平台部}{算法工程师实习生 \headerdivider 2025.06--2025.09}
+\vspace{0.25em}
+\cvprojectline{企业知识助手}{Python, RAG, Elasticsearch}
+\noindent\textbf{项目背景：}面向企业内部知识检索与问答场景，搭建从数据处理、混合检索到答案生成的完整链路。\par
+\noindent\textbf{主要贡献：}\par
+\companyitem{ByteDanceBlue}{负责核心检索模块与评测流程，支持多种数据源接入。}
+\companyitem{ByteDanceBlue}{设计缓存与批处理策略，降低线上响应延迟。}
+\noindent\textbf{项目成果：}在内部测试集上将答案准确率提升至 XX\%，平均响应时间降低 XX\%；请替换为你的真实指标。\par
+
+\companybanner[0.8em]{HuaweiTint}{HuaweiRed}{%
+  \textcolor{HuaweiRed}{\fontsize{18}{18}\selectfont\simpleicon{huawei}}%
+}{华为技术有限公司\,·\,研发中心}{软件工程师实习生 \headerdivider 2024.07--2024.10}
+\vspace{0.25em}
+\cvprojectline{研发效能平台}{Python, PostgreSQL, Docker}
+\noindent\textbf{项目背景：}面向研发流程中的任务编排、结果追踪与重复操作自动化，建设研发效能平台。\par
+\noindent\textbf{主要贡献：}\par
+\companyitem{HuaweiRed}{使用 Python 与 PostgreSQL 开发任务编排和结果追踪功能，完善异常处理、日志记录与自动化测试。}
+\companyitem{HuaweiRed}{参与需求评审和代码审查，推动重复操作自动化；请根据岗位要求调整技术关键词与成果描述。}
+
+\endgroup

@@ -1,406 +1,402 @@
-# VibeResume · Vibe 简历
+# OpenCurVe Resume
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D18-339933?logo=node.js&logoColor=white)](package.json)
-[![Web to PDF](https://img.shields.io/badge/web--to--PDF-Chromium-2563eb)](scripts/export-pdf.mjs)
-[![Vibe Coding](https://img.shields.io/badge/vibe-coding-ff69b4)](#像-vibe-coding-一样编辑简历)
-[![AI Editable](https://img.shields.io/badge/AI-editable-7c3aed)](skills/vibe-resume-editor/SKILL.md)
-[![Open Source](https://img.shields.io/badge/open-source-111827)](https://github.com/LiuMengxuan04/vibe-resume)
+[![LaTeX Template](https://img.shields.io/badge/LaTeX-template-008080?logo=latex&logoColor=white)](resume.tex)
+[![Compiler](https://img.shields.io/badge/compiler-XeLaTeX%20%7C%20LuaLaTeX-2F6F9F)](#环境要求)
+[![CurVe Based](https://img.shields.io/badge/CurVe-based-4F94C4)](https://ctan.org/pkg/curve)
+[![One Page](https://img.shields.io/badge/resume-one--page-173A86)](#效果预览)
+[![AI Editable](https://img.shields.io/badge/AI-editable-7C3AED)](#为什么使用-latex)
 
-> 像 vibe coding 一样编辑你的简历：告诉 AI 你想怎么改，它直接修改网页简历，再一键导出为 PDF。
+制作简历有好的想法，但是在Word难以体现出来？排版总是有莫名的缩进，字体总是对不齐？想使用AI辅助但是修改总是有偏差？Html可以生成漂亮的简历，但是人工调整却难以下手？
 
-VibeResume 是一个 **AI 友好、网页优先、可导出 PDF 的简历模板仓库**。你不需要在 Word、LaTeX 或浏览器打印预览里反复对齐版式；把简历维护成 `HTML + CSS`，让 AI 帮你改内容和排版，然后用脚本把网页看到的布局稳定导出为一页或两页 PDF。
+<p align="center"><strong>OPENCURVE RESUME IS ALL YOU NEED !</strong></p>
 
-[English](#english)
+> OpenCurVe Resume是一个基于 [CurVe](https://ctan.org/pkg/curve) 的可高度定制单页 LaTeX 简历模板。
+
+## 效果预览
 
 <p align="center">
-  <img src="templates/internship-employment/standard-one-page/preview.png" alt="VibeResume 实习就业标准单页模板预览" width="31%" />
-  <img src="templates/internship-employment/dense-two-page/preview-page-1.png" alt="VibeResume 实习就业高密度双页模板预览" width="31%" />
-  <img src="templates/research-application/research-classic/preview.png" alt="VibeResume 科研申请模板预览" width="31%" />
+  <img src="./assets/resume-preview.png" alt="OpenCurVe Resume 示例预览" width="820">
 </p>
 
-- 示例网页：打开根目录 `index.html`，或进入下方模板目录
-- 示例 PDF：[实习就业标准单页](export/vibe-resume-demo.pdf) · [实习就业高密度双页](export/vibe-resume-dense-two-page-demo.pdf) · [科研申请](export/vibe-resume-research-classic-demo.pdf)
-- AI 使用说明：[skills/vibe-resume-editor/SKILL.md](skills/vibe-resume-editor/SKILL.md)
+## 为什么使用 LaTeX
 
-## 为什么做这个项目
+当前市面上简历形式主要是**Word**，人工编辑直观，但是复杂排版对操作者要求较高，同时AI难以精确修改内容；一部分是**HTML/CSS 转 PDF**（可以参考[VibeResume](https://github.com/LiuMengxuan04/vibe-resume)，本项目开源想法也来自于此），适合AI生成和修改，但人工维护困难。
 
-传统简历维护经常卡在三个地方：
+**LaTeX** 可以让AI精确修改内容，人工编辑也仅需少量命令，且排版结果稳定。
 
-- 简历内容想让 AI 改，但 Word / PDF 不适合 AI 直接编辑。
-- 网页看起来正常，浏览器“打印成 PDF”后版式却错位。
-- 针对不同岗位微调简历时，内容、排版、PDF 导出很难形成稳定闭环。
 
-VibeResume 的思路是：**把网页作为简历源文件，把 AI 当作编辑器，把 PDF 当作构建产物。**
+## 环境要求
 
-## 核心特点
+推荐使用完整安装的 TeX Live 或 Overleaf，并选择以下编译器之一：
 
-- **像 vibe coding 一样编辑简历**：直接告诉 AI 目标岗位、修改方向和版式要求，让它修改 `index.html` 与 `styles.css`。
-- **网页即源文件**：简历内容、布局、图标、链接都在静态 HTML/CSS 中维护，天然适合 Git 版本管理。
-- **一键导出 PDF**：使用 Chromium 渲染网页的 `screen` 布局；一页模板动态测量 `.page` 高度，双页模板识别 `.resume-page` 并按页导出。
-- **分类模板**：`templates/internship-employment/` 提供两种实习就业模板，`templates/research-application/` 提供科研申请模板。
-- **避免打印错位**：不依赖手动浏览器打印，不触发不可控的纸张边距、分页、缩放和 `@media print` 差异。
-- **AI 配套 Skill**：仓库内置 `vibe-resume-editor`，可以作为 Codex-style skill 即插即用。
-- **开源项目友好**：包含 README、License、示例 PDF、预览截图、导出脚本、依赖锁定和 mock 示例内容。
+- XeLaTeX；
+- LuaLaTeX。
 
-## 快速开始
+模板使用的主要 LaTeX 包包括：
 
-> [!IMPORTANT]
-> 浏览器只负责预览 HTML，不负责生成最终交付 PDF。请勿把浏览器“打印 / 另存为 PDF”的结果作为正式简历；最终 PDF 必须通过本项目官方导出脚本生成。
+- `curve`、`ctex`、`fontspec`；
+- `fontawesome5`、`simpleicons`；
+- `graphicx`、`xcolor`、`hyperref`；
+- `tcolorbox` 及其 `skins` 库。
 
-安装依赖：
-
-```bash
-npm install
-```
-
-本地预览：
-
-```bash
-npm run preview
-```
-
-然后访问：
-
-```text
-http://localhost:4173
-```
-
-导出 PDF：
-
-```bash
-npm run export:pdf
-```
-
-默认输出：
-
-```text
-export/vibe-resume-demo.pdf
-```
-
-导出高密度双页模板：
-
-```bash
-npm run export:pdf:dense-two-page
-```
-
-输出：
-
-```text
-export/vibe-resume-dense-two-page-demo.pdf
-```
-
-导出实习就业标准单页模板（分类目录版本）：
-
-```bash
-npm run export:pdf:internship-standard
-```
-
-导出科研申请模板：
-
-```bash
-npm run export:pdf:research-classic
-```
-
-输出：
-
-```text
-export/vibe-resume-research-classic-demo.pdf
-```
-
-也可以指定输出路径：
-
-```bash
-./export-pdf.sh export/my-resume.pdf
-```
-
-通用脚本也可以指定模板 HTML：
-
-```bash
-./export-pdf.sh export/my-two-page-resume.pdf templates/internship-employment/dense-two-page/index.html
-```
-
-## 模板选择
-
-### 实习就业
-
-#### 标准一页模板
-
-- 文件：`templates/internship-employment/standard-one-page/index.html` + `styles.css`
-- 适合：经历较少、强调快速扫描、默认一页投递的简历。
-- [预览](templates/internship-employment/standard-one-page/preview.png) · 导出：`npm run export:pdf:internship-standard`
-
-根目录 `index.html` + `styles.css` 仍保留为兼容入口；`npm run export:pdf` 与 `npm run export:pdf:internship-standard` 均使用分类目录中的标准单页源文件。
-
-#### Dense Two-Page 高密度技术模板
-
-- 文件：`templates/internship-employment/dense-two-page/index.html` + `templates/internship-employment/dense-two-page/styles.css`
-- 适合：算法、AI Agent、基础设施、研究与开源经历较多的候选人。
-- 风格：白底、高密度正文、蓝色章节标题、细分隔线、浅色 Logo 标题条和详细技术 bullet。
-- 页数：默认示例为两页；删除第二个 `.resume-page` 后，同一导出器会自动生成一页 PDF。
-- [预览](templates/internship-employment/dense-two-page/preview.png) · 导出：`npm run export:pdf:dense-two-page`
-
-当用户明确要求两页简历时，配套 Skill 会默认选择这个模板；未指定页数时仍沿用根目录的一页模板。
-
-### 科研申请
-
-#### Research Classic 科研申请模板
-
-- 文件：`templates/research-application/research-classic/index.html` + `templates/research-application/research-classic/styles.css`
-- 适合：博士申请、科研实习、研究助理与需要突出论文、代表性研究成果的候选人。
-- 风格：连续长页、经典学术排版；代表作通过问题、方法、量化证据和发表状态建立扫读重点。
-- [预览](templates/research-application/research-classic/preview.png) · 导出：`npm run export:pdf:research-classic`
-- 说明：[`templates/research-application/research-classic/README.md`](templates/research-application/research-classic/README.md)
-- 校徽说明：模板中的东南大学（SEU）校徽仅为示例；请自行准备并上传你的学校校徽，或删除该图片元素。
-
-如果脚本找不到浏览器，可以手动指定 Chrome / Chromium：
-
-```bash
-CHROME_PATH=/path/to/chrome ./export-pdf.sh
-```
-
-优先使用与当前 `playwright-core` 版本匹配的 Playwright Chromium。系统 Chrome
-可能比项目依赖更新得更快；版本不兼容时，Chromium 偶尔会生成只有背景、边框和图片，
-但没有正文文字的 PDF。导出器会检查生成文件的 PDF 文本绘制指令，发现这种情况时删除
-无效文件并返回错误，而不是打印成功信息。
-
-如果显式设置 `CHROME_PATH` 后出现文字层校验错误，请先取消该变量，让导出器自动选择
-Playwright 缓存中的 Chromium：
-
-```bash
-unset CHROME_PATH
-./export-pdf.sh export/my-resume.pdf
-```
-
-也可以把 `CHROME_PATH` 指向与项目 Playwright 版本匹配的 Chromium 可执行文件。文件名
-建议避免 `*` 等 shell 特殊字符，即使路径已经放在引号中。
-
-在 Codex、CI、容器或其他受限环境中，Chromium 也可能因沙箱策略无法启动，
-并出现 `Permission denied`、`MachPortRendezvousServer` 或浏览器启动后立即关闭。
-导出器会把这些底层日志转换成可操作的提示。此时请在本机终端执行
-`./export-pdf.sh`，或为执行环境开放启动无头浏览器所需的权限；设置
-`CHROME_PATH` 只能选择浏览器，不能绕过系统沙箱。
-
-## 像 Vibe Coding 一样编辑简历
-
-推荐工作流：
-
-1. 把你的目标岗位、目标公司、简历语言、已有经历和想强调的能力告诉 AI。
-2. 让 AI 直接修改 `index.html`，把 mock 内容替换成你的真实简历。
-3. 让 AI 调整 `styles.css`，控制密度、字号、宽度、间距、图标和模块顺序。
-4. 在浏览器里预览，或者把截图发给 AI 继续微调。
-5. 运行 `npm run export:pdf`，检查 PDF 是否仍是一页、内容是否完整。
-6. 针对不同 JD 重复这个过程，形成多个岗位版本。
-
-示例 prompt：
-
-```text
-请基于这个模板帮我制作 AI Agent 工程实习简历。
-保持一页 PDF，突出 tool calling、RAG、Agent runtime、评测和工程化能力。
-语气正式，不要堆关键词，不要编造我没有做过的经历。
-```
-
-## AI Skill
-
-仓库内置一个 Codex-style skill：
-
-```text
-skills/vibe-resume-editor/SKILL.md
-```
-
-安装到本机 Codex：
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R skills/vibe-resume-editor ~/.codex/skills/
-```
-
-新开一个 Codex 会话后可以直接说：
-
-```text
-使用 vibe-resume-editor skill，把这份 Vibe 简历改成我的真实后端开发实习简历，并导出一页 PDF。
-```
-
-如果你的 AI 工具不支持 Codex skills，也可以把 `SKILL.md` 的内容复制到对话中作为项目说明。
-
-## 示例内容声明
-
-这个仓库里的简历内容是模板演示用 mock 数据。
-
-- 姓名、学校、电话、邮箱、奖项、实习角色、项目描述、日期和技能均为虚构示例。
-- `assets/avatar.png` 是 AI 生成头像，不是真实人物证件照。
-- 高密度双页模板使用字节跳动、快手、美团和哔哩哔哩作为公司栏示例，并明确标注 `Mock 模拟经历`；所有实习内容与指标均为虚构演示。
-- MiniCode 作为真实开源项目彩蛋保留：<https://github.com/LiuMengxuan04/MiniCode>。你可以替换成自己的开源项目、论文、产品或作品集。
-
-## 关联项目
-
-VibeResume 负责最后一公里：把简历内容维护成漂亮网页，并稳定导出 PDF。它可以和下面两个项目组成完整求职材料流水线：
-
-- [鼠鼠实习妙妙工具](https://github.com/LiuMengxuan04/shushu-internship-tool)：AI 驱动的实习项目准备工具包。它可以根据目标 JD 选择 GitHub 项目、审计代码仓库、规划运行路径、设计可面试改造点，并生成 STAR 简历项目、核心代码讲解、面试 Q&A 和展示材料。
-- [鼠鼠实习简历优化器](https://github.com/Sunanzhe2004/shushu-internship-resume-optimizer)：面向实习材料的简历整理工具。它把代码仓库、项目总结和业务背景等散乱材料先做成果审计，再按目标 JD 排序，生成简历 bullet、项目总结、STAR 草稿、面试 Q&A、风险检查清单和投递前检查表。
-
-组合流程可以是：
-
-```text
-shushu-internship-tool
-  -> 规划 / 构建 / 理解一个能投递、能面试的项目
-
-shushu-internship-resume-optimizer
-  -> 把项目证据、业务背景和经历材料整理成可投递表达
-
-VibeResume
-  -> 让 AI 修改网页简历，并导出稳定的一页或两页 PDF
-```
-
-## 图标与 Logo
-
-公司和项目 Logo 是可选项。没有合适图标时，直接保留纯文本公司名即可，简历仍然应该完整、正式。
-
-需要公司 Logo 时，Agent 应主动建议用户打开 [Iconfont](https://www.iconfont.cn/) 手动搜索、核对并下载 SVG，再将文件上传给 Agent。Agent 不应代替用户在 Iconfont 上凭关键字猜选，也不应用产品 Logo 冒充公司 Logo。如有公司官方品牌或媒体素材库，也可优先使用。
-
-需要 AI 模型、产品或供应商图标时，先阅读 [LobeHub Icons 官方使用指南](https://lobehub.com/icons/skill.md)。LobeHub 标准流程是：
-
-1. 安装 `@lobehub/icons`。
-2. 查询包导出的 `toc`，核对 PascalCase `id`、品牌色和 `param.hasColor` / `hasBrandColor` 等变体。
-3. 使用 `getLobeIconCDN(id.toLowerCase(), { format: 'svg', type: 'color', cdn: 'unpkg' })` 生成静态 SVG 地址。
-4. 把选定 ID 加入 `scripts/sync-lobe-icons.mjs`，再运行 `npm run sync:logos` 将 SVG 下载到 `assets/logos/`；正式简历只引用本地文件，不热链 CDN。
-
-如果要使用矢量图：
-
-- 自己上传 SVG 到 `assets/logos/` 并在 `index.html` 中引用。
-- 让 Agent 按上述官方 Skill 流程在 <https://lobehub.com/icons> 和 `toc` 中确认公司、产品、框架或开源项目图标。
-
-科研申请模板中的东南大学（SEU）校徽仅用于展示图片位置和比例，不代表模板使用者的学校。使用时请自行上传并替换为你的学校校徽，或删除校徽。
-
-当前双页示例中，字节跳动、快手和美团使用用户从 Iconfont 手动下载后提供的 SVG；哔哩哔哩使用 `@lobehub/icons` 的 `Bilibili.Color`。公司栏背景、左侧强调色与 Logo 主色呼应。公司名、Logo 和商标归各自权利方所有。
-
-双页模板的 Logo 应保持透明直贴，不添加白色底座、白边、额外描边或装饰圆角。不要只机械统一 CSS 宽高：应根据 SVG 自带留白逐枚校准，使实际图形的视觉高度约占 44px 公司栏的 75%–80%。当前显示盒约为 35–39px；窄长图形可适度加宽，但不得拉伸或裁切。
+`tcolorbox` 会间接加载 PGF/TikZ，用于公司 Banner 的圆角、裁切和 Logo 独立居中。章节标题本身使用原生 TeX 绘制。
 
 ## 项目结构
 
 ```text
-.
+OpenCurVe Resume/
+├── README.md
+├── LICENSE
+├── .gitignore
+├── resume.tex                 # 编译入口与页眉信息
+├── open-curve.sty             # 全局字体、颜色、间距和通用组件
+├── resume.pdf                 # 编译后的示例
 ├── assets/
-│   ├── logos/
-│   │   ├── bilibili-color.svg
-│   │   ├── bytedance-iconfont.svg
-│   │   ├── huawei-color.svg
-│   │   ├── kuaishou-iconfont.svg
-│   │   └── meituan-iconfont.svg
-│   ├── fonts/
-│   │   ├── eb-garamond-regular.woff2
-│   │   ├── eb-garamond-semibold.woff2
-│   │   └── eb-garamond-bold.woff2
-│   ├── avatar.png
-│   ├── minicode-logo.svg
-│   └── preview.png
-├── export/
-│   ├── vibe-resume-demo.pdf
-│   ├── vibe-resume-dense-two-page-demo.pdf
-│   └── vibe-resume-research-classic-demo.pdf
-├── skills/
-│   └── vibe-resume-editor/
-│       └── SKILL.md
-├── scripts/
-│   ├── export-pdf.mjs
-│   └── sync-lobe-icons.mjs
-├── templates/
-│   ├── internship-employment/
-│   │   ├── standard-one-page/
-│   │   └── dense-two-page/
-│   ├── research-application/
-│   │   └── research-classic/
-│   └── README.md
-├── export-pdf.sh
-├── index.html
-├── styles.css
-├── package.json
-└── README.md
+│   ├── bytedance-color.png    # 图片 Logo 示例
+│   └── resume-preview.png     # README 效果预览
+└── sections/
+    ├── education.tex          # 教育背景
+    ├── experience.tex         # 实习经历与公司Banner
+    ├── projects.tex           # 项目经历
+    └── skills.tex             # 个人技能
 ```
 
-## 为什么不直接用浏览器打印
+## 使用方法
 
-浏览器打印通常会从 `screen` 媒体切换到 `print` 媒体，触发不同的纸张大小、分页、边距、缩放、字体渲染和 `@media print` 规则，所以导出的 PDF 经常和网页预览不一致。
+> [!TIP]
+> 如果你懒得自己修改可以全程与AI进行交互，以下内容可以跳过
 
-VibeResume 的导出脚本会打开所选模板 HTML，强制使用 `screen` 布局，隐藏工具栏；一页模板会测量 `.page` 的实际高度，分页模板会识别 `.resume-page` 并保持显式分页。这样生成的 PDF 才能稳定复现网页布局。
+### 1. 修改个人信息
 
-因此请严格区分：
+在 `resume.tex` 的 `\leftheader` 中替换姓名、电话、邮箱、出生年月、GitHub 和额外说明：
 
-- 浏览器：只用于查看和调试网页效果。
-- `npm run export:pdf` / `npm run export:pdf:internship-standard` / `npm run export:pdf:dense-two-page` / `npm run export:pdf:research-classic` / `./export-pdf.sh`：用于生成最终交付 PDF。
+```latex
+\leftheader{%
+  {\LARGE\sffamily\bfseries 你的姓名}\par\smallskip
+  \normalsize
+  % 电话、邮箱、出生年月、GitHub 和额外说明
+}
+```
 
-无论是一页还是两页模板，正式 PDF 都必须走项目官方导出脚本。
+当前页眉左右比例为 `74/26`，定义在 `open-curve.sty`：
 
-## 致谢
+```latex
+\headerscale{0.74}
+```
 
-VibeResume 的灵感来源之一，是与 [he11x / kexin](https://github.com/he11x) 的聊天交流。感谢这些关于 AI、简历维护和 vibe coding 工作流的讨论带来的启发。
+### 2. 修改正文
 
-## 开源协议
+直接编辑 `sections/` 中对应文件：
 
-[MIT](LICENSE)
+- 教育经历：`sections/education.tex`；
+- 实习经历：`sections/experience.tex`；
+- 项目经历：`sections/projects.tex`；
+- 个人技能：`sections/skills.tex`。
 
----
+模块顺序由 `resume.tex` 决定，可以删除、增加或重新排序：
 
-## English
+```latex
+\input{sections/education}
+\input{sections/experience}
+\input{sections/projects}
+\input{sections/skills}
+```
 
-VibeResume is a vibe-coding friendly web-to-PDF resume template repository. It includes two internship and employment templates plus a research application template.
+### 3. 编译
 
-### Highlights
-
-- **AI-editable resume**: describe what you want, and let an AI agent update the HTML/CSS resume directly.
-- **Web-first source**: content, layout, links, icons, and styling are all version-controlled as static files.
-- **Stable PDF export**: Chromium renders the screen layout and exports either a measured continuous page or explicit `.resume-page` pages.
-- **Template categories**: `templates/internship-employment/` contains standard one-page and dense technical layouts; `templates/research-application/` contains the research application layout.
-- **Print mismatch avoidance**: no manual browser print workflow, no unexpected print-media pagination.
-- **Codex-style skill included**: `skills/vibe-resume-editor/SKILL.md` gives agents project-specific editing and validation rules.
-- **Open-source ready**: MIT license, badges, preview screenshot, sample PDF, export script, and mock demo content.
-
-### Quick Start
-
-> **Important:** Use the browser only to preview the HTML. Never deliver a PDF produced by browser Print / Save as PDF. Generate the final PDF with the repository's official export scripts.
+进入项目目录后运行：
 
 ```bash
-npm install
-npm run preview
-npm run export:pdf
-npm run export:pdf:internship-standard
-npm run export:pdf:dense-two-page
-npm run export:pdf:research-classic
+latexmk -xelatex resume.tex
 ```
 
-Default PDF output:
+也可以使用 LuaLaTeX：
 
-```text
-export/vibe-resume-demo.pdf
+```bash
+latexmk -lualatex resume.tex
 ```
 
-### AI Workflow
+清理辅助文件：
 
-1. Share your target role, target JD, resume language, and raw experience notes with an AI assistant.
-2. Ask it to replace the mock content in `index.html` with your real resume.
-3. Ask it to tune density, section order, typography, spacing, and icons in `styles.css`.
-4. Preview the page, send screenshots back to the AI, and iterate.
-5. Run `npm run export:pdf` and check the generated PDF.
-
-### Demo Notice
-
-The resume content in this repository is mock data. The avatar is AI-generated. The root one-page demo retains Huawei and Bilibili as demo-only placeholders; the dense two-page demo uses ByteDance, Kuaishou, Meituan, and Bilibili, each explicitly labeled `Mock 模拟经历`. None of the internship details describe real work experience. MiniCode is kept as a real open-source easter egg and can be replaced.
-
-### Related Projects
-
-- [shushu-internship-tool](https://github.com/LiuMengxuan04/shushu-internship-tool): turns a target JD into project selection, repository audit, runnable project planning, modification ideas, resume-ready STAR bullets, code explanations, interview Q&A, and presentation materials.
-- [shushu-internship-resume-optimizer](https://github.com/Sunanzhe2004/shushu-internship-resume-optimizer): turns scattered internship materials into audited achievements, JD-ranked resume bullets, project summaries, STAR drafts, interview Q&A, risk checks, and application checklists.
-
-Recommended pipeline:
-
-```text
-shushu-internship-tool -> shushu-internship-resume-optimizer -> VibeResume
+```bash
+latexmk -c resume.tex
 ```
 
-### Acknowledgements
+在 Overleaf 中上传整个目录，将 Compiler 设置为 **XeLaTeX** 或 **LuaLaTeX**，主文件选择 `resume.tex`。
 
-One source of inspiration for VibeResume was the conversation with [he11x / kexin](https://github.com/he11x) around AI, resume maintenance, and vibe-coding workflows.
+## 定制页眉图片
 
-### License
+所有图片建议放入 `assets/`。PNG、JPG 和 PDF 可以直接使用；SVG 建议先转换为 PDF。
 
-[MIT](LICENSE)
+修改 `resume.tex` 中完整的 `\rightheader` 区块即可。
+
+### 单个校徽
+
+```latex
+\rightheader{%
+  \centering
+  \includegraphics[width=0.72\linewidth]{assets/school-logo.pdf}%
+}
+```
+
+### 两个校徽
+
+```latex
+\rightheader{%
+  \includegraphics[width=0.48\linewidth]{assets/school-a.pdf}\hspace{0.8mm}%
+  \includegraphics[width=0.48\linewidth]{assets/school-b.pdf}%
+}
+```
+
+如果图片宽度不同，可以分别调整两个 `width` 数值。
+
+### 头像
+
+```latex
+\rightheader{%
+  \centering
+  \includegraphics[
+    width=2.5cm,
+    height=2.5cm,
+    keepaspectratio
+  ]{assets/avatar.jpg}%
+}
+```
+
+
+## 定制全局颜色
+
+全局颜色位于 `open-curve.sty`：
+
+```latex
+\definecolor{OpenCurvePrimary}{HTML}{2F6F9F}
+\definecolor{OpenCurveAccent}{HTML}{4F94C4}
+\definecolor{OpenCurveHeading}{HTML}{173A86}
+\definecolor{OpenCurveMuted}{HTML}{4B5563}
+```
+
+| 颜色 | 默认用途 |
+| --- | --- |
+| `OpenCurvePrimary` | “教育背景”等章节标题 |
+| `OpenCurveAccent` | 章节横线、页眉占位框边框 |
+| `OpenCurveHeading` | 项目名称、公司项目名称等二级标题 |
+| `OpenCurveMuted` | 日期、职位、辅助说明 |
+
+将 HTML 色值替换即可。例如：
+
+```latex
+\definecolor{OpenCurvePrimary}{HTML}{1F4E79}
+```
+
+链接颜色在 `open-curve.sty` 的 `hyperref` 配置中，默认全部为黑色：
+
+```latex
+\RequirePackage[colorlinks=true,allcolors=black,breaklinks=true]{hyperref}
+```
+
+## 定制公司 Banner
+
+公司专属配置没有放入全局样式，而是集中在 `sections/experience.tex`，便于直接复制、删除或替换。
+
+### 公司颜色
+
+```latex
+\definecolor{ByteDanceBlue}{HTML}{3C8CFF}
+\definecolor{ByteDanceTint}{HTML}{EEF5FF}
+\definecolor{HuaweiRed}{HTML}{CF0A2C}
+\definecolor{HuaweiTint}{HTML}{FFF1F3}
+```
+
+每家公司通常需要：
+
+- 一个品牌主色，用于左侧边条、Logo 和 Bullet；
+- 一个浅色背景，用于 Banner 背景。
+
+### Banner 参数
+
+```latex
+\companybanner[上方间距]
+  {背景色}
+  {品牌色}
+  {Logo}
+  {公司及部门名称}
+  {职位与日期}
+```
+
+例如：
+
+```latex
+\companybanner[0.8em]{HuaweiTint}{HuaweiRed}{Logo 内容}{%
+  华为技术有限公司\,·\,研发中心
+}{软件工程师实习生 \headerdivider 2024.07--2024.10}
+```
+
+Banner 的固定高度、圆角、左右内边距和品牌色左边条都定义在同一个文件的 `\companybanner` 中：
+
+```latex
+arc=1.5mm,
+height=22pt,
+left=6pt,
+right=6pt
+```
+
+左边条宽度在 overlay 中设置：
+
+```latex
+([xshift=3pt]frame.north west)
+```
+
+### 使用图片 Logo
+
+字节跳动示例从 `assets/` 加载透明 PNG：
+
+```latex
+\includegraphics[height=20pt]{assets/bytedance-color.png}
+```
+
+替换图片文件或调整 `height` 即可。图片由独立 overlay 节点居中，不需要额外使用 `\raisebox`。
+
+### 使用 Simple Icons
+
+华为示例使用 `simpleicons`：
+
+```latex
+\textcolor{HuaweiRed}{%
+  \fontsize{18}{18}\selectfont\simpleicon{huawei}%
+}
+```
+
+更换图标时，只需将 `huawei` 换成 Simple Icons 支持的名称，并调整颜色或字号。例如：
+
+```latex
+\simpleicon{github}
+```
+
+因此同一个 `\companybanner` 同时支持本地图片、Simple Icons，也可以传入普通文字或其他 LaTeX 图标。
+
+## 定制 Bullet
+
+### 通用 Bullet
+
+`open-curve.sty` 中的 `\cvitem` 默认使用黑色 Bullet：
+
+```latex
+\cvitem{普通内容}
+```
+
+通过可选参数指定颜色：
+
+```latex
+\cvitem[OpenCurveAccent]{彩色 Bullet 内容}
+```
+
+其续行缩进按照“Bullet＋一个空格”的实际宽度自动计算。
+
+### 主要贡献 Bullet
+
+实习模块中的“项目背景”“主要贡献”“项目成果”标签不带 Bullet；只有“主要贡献”下面的具体分点使用 `\companyitem`：
+
+```latex
+\companyitem{ByteDanceBlue}{字节跳动项目的具体贡献。}
+\companyitem{HuaweiRed}{华为项目的具体贡献。}
+```
+
+`\companyitem` 位于 `sections/experience.tex`，当前首行缩进为 `0.65em`，续行悬挂缩进为 `1.6em`：
+
+```latex
+\hspace{0.65em}
+\hangindent=1.6em
+```
+
+## 定制字体
+
+字体配置位于 `open-curve.sty`。
+
+| 类型 | 首选字体 | 回退字体 |
+| --- | --- | --- |
+| 英文正文及无衬线文字 | Times New Roman | TeX Gyre Termes |
+| 中文正文及无衬线文字 | Microsoft YaHei | FandolHei |
+| 英文等宽字体 | TeX Gyre Cursor | — |
+
+首选字体存在时自动使用，不存在时回退：
+
+```latex
+\IfFontExistsTF{Times New Roman}{
+  \setmainfont{Times New Roman}
+  \setsansfont{Times New Roman}
+}{
+  \setmainfont{TeX Gyre Termes}
+  \setsansfont{TeX Gyre Termes}
+}
+```
+
+更换中文字体时，同步修改以下命令：
+
+```latex
+\setCJKmainfont{你的中文字体}
+\setCJKsansfont{你的中文字体}
+\setCJKmonofont{你的中文字体}
+```
+
+建议保留 `\IfFontExistsTF` 回退逻辑，以便在本机、GitHub Actions 和 Overleaf 上获得更稳定的编译结果。
+
+## 定制版式和间距
+
+### 页边距
+
+位于 `open-curve.sty`：
+
+```latex
+\RequirePackage[
+  a4paper,
+  left=1.2cm,
+  right=1.2cm,
+  top=1cm,
+  bottom=1cm
+]{geometry}
+```
+
+### 全局行距
+
+```latex
+\linespread{1.3}\selectfont
+```
+
+### 章节标题前间距
+
+每个章节可单独设置：
+
+```latex
+\cvsection[0.8]{教育背景}
+\cvsection[0.45]{实习经历}
+```
+
+可选参数以当前 `\baselineskip` 为单位。表格等前置内容会影响视觉间距，因此不同章节可以使用不同数值。
+
+### 章节标题和横线
+
+`\cvsection` 位于 `open-curve.sty`，当前设置包括：
+
+- 标题：`15pt / 16.8pt`；
+- 标题到横线：`3.5pt`；
+- 横线粗细：`1.5pt`。
+
+### 项目标题间距
+
+`\cvheading` 的可选参数控制标题上方间距：
+
+```latex
+\cvheading{第一个项目}{技术栈}
+\cvheading[0.8em]{后续项目}{技术栈}
+```
+
+## 友链
+
+[LINUX DO](https://linux.do/)
+
+## 许可与致谢
+
+OpenCurVe Resume 的原创代码和文档采用 [MIT License](./LICENSE)。
+
+本项目使用 Didier Verna 的 CurVe 文档类，并基于 LianTze Lim 的 [A Customised CurVe CV](https://www.overleaf.com/latex/templates/a-customised-curve-cv/mvmbhkwsnmwv) 示例进行重构。
