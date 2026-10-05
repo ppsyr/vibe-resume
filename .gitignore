@@ -7,5 +7,4 @@ export/*
 __pycache__/
 *.pyc
 .DS_Store
-output/
 .env
