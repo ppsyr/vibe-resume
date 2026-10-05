@@ -9,7 +9,8 @@
 \cvitem{\textbf{分层报告与渐进式注入：}将历史会话保存为\textbf{概览、摘要和会话副本三层报告}；可使用 SQLite FTS5 全文检索定位概览，也可通过命令直接注入摘要，再根据大模型需展开相关知识与对话轮次注入会话副本，减少无关历史进入上下文。}
 
 \cvprojectheading{PlugAgent：可插拔的 Agent 运行时}{Java, Spring Boot, DDD 架构, Java SPI, ClassLoader}{\textbf{2026.04--2026.07}}
-\cvdescription{基于 Java 17 与 Spring Boot 3.3 实现的模块化 Agent 运行时，以端口-适配器架构将组件变成统一的可替换机制，支持将现有 Java 系统以插件形式零改造拓展接入 Agent 能力。}
-\cvitem{\textbf{编排运行时：}把会话生命周期、ReAct 循环、工具执行、模型调用与状态持久化编排成一条事件驱动的执行流水线。case 层按责任链依次完成 Agent 实例复用、意图分类、消息改写与结果收集，把一次请求编译成事件序列；domain 层拿到 case 层的消息追加事件，每步走「取历史记录 → 装配提示词与工具 → 通过接口调模型 → 执行工具 → 回填事件」；同一份事件流向前投影成 SSE 推给前端、向后落库并可随时取出完整会话历史。}
-\cvitem{\textbf{插件系统：}现有 Java 系统可零改造接入 AI 功能。职责边界划分：Agent 系统负责模型调用、ReAct 编排与工具治理；Tool Registry 统一内置与插件工具；ToolCallExecutor 统一执行。插件只负责把工具调用翻译成业务 API——模型通过插件工具访问业务系统数据，实现\textbf{业务系统代码零改造}。支持\textbf{两种插件运行时}：JAVA\_NATIVE 面向 Java 插件，由宿主在同 JVM 内建独立 ClassLoader 加载、以自身为父加载器隔离依赖；DSH\_NODE\_BRIDGE 面向 Node/TS 插件，宿主拉起子进程并经 JSON-RPC 交换工具清单，天然免疫依赖冲突。两者包装成同一份 ToolDefinition 汇入注册表。}
+\cvdescription{基于 Java 17 与 Spring Boot 3.3 实现的模块化 Agent 运行时，以接口-适配器架构将组件变成统一的可替换机制，支持将现有 Java 系统零代码改造、以插件形式拓展接入 Agent 能力。}
+\cvitem{\textbf{编排运行时：}把会话生命周期、ReAct 循环、工具执行、模型调用与状态持久化编排成一条事件驱动的执行流水线。编排层按责任链依次完成 Agent 实例复用、意图分类、消息改写与结果收集，把一次请求编译成事件序列；领域层拿到编排层的消息追加事件，每步走「取历史记录 → 装配提示词与工具 → 通过接口调模型 → 执行工具 → 回填事件」。}
+\cvitem{\textbf{组件可替换：}领域层只定义端口、不感知实现，基础设施层反向 implements 这些端口并由 Spring 注入回实现点——编译期依赖始终指向抽象， \textbf{换实现只需换一个基础设施层的适配器，而不需要修改领域代码}。}
+\cvitem{\textbf{插件系统：}现有 Java 系统可零改造接入 AI 功能。职责边界划分：Agent 系统负责模型调用、ReAct 编排与工具治理；Tool Registry 统一内置与插件工具；ToolCallExecutor 统一执行。插件负责把工具调用翻译成业务 API——模型通过插件工具访问业务系统数据，实现\textbf{业务系统代码零改造}。JAVA\_NATIVE 运行时面向 Java 插件，由宿主在同 JVM 内建独立 ClassLoader 加载、以自身为父加载器隔离依赖。}
 \cvitem{\textbf{插件落地：}插件接入现有 Java 系统，插件只做 API 调用，Java 系统实现业务逻辑。\textbf{智能客服}插件封装商品搜索、商品详情、订单查询、订单详情、物流查询 5 个工具，把防幻觉规则写进系统提示词：推荐工具返回真实商品，无下单能力时明确引导转人工。\textbf{MySQL 运维}插件封装连接管理、只读查询、执行计划、性能快照、SQL 审查 5 个工具，只读约束分四层落地：提示词禁止写操作、PRE Hook 注入审计标记、SQL 审查工具做关键字检测、最终由业务侧对非只读语句返回 403。}
