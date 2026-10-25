@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1791210546.47852 "output/resume.xdv" "output/resume.pdf" "output/resume" 1791210546.97871 0
-  "output/resume.xdv" 1791210546.44259 39500 f0991969bec74f38ab930ba4df463cc4 "xelatex"
+["xdvipdfmx"] 1792915464.5713 "output/resume.xdv" "output/resume.pdf" "output/resume" 1792915465.10385 0
+  "output/resume.xdv" 1792915464.53388 39612 5376e4b929306d2b8cf5452ac9c9526d "xelatex"
   (generated)
   "output/resume.pdf"
   (rewritten before read)
-["xelatex"] 1791210545.50091 "resume.tex" "output/resume.xdv" "resume" 1791210546.97778 0
+["xelatex"] 1792915463.50145 "resume.tex" "output/resume.xdv" "resume" 1792915465.10289 0
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
@@ -164,11 +164,11 @@
   "/usr/local/texlive/2026/texmf-var/web2c/xetex/xelatex.fmt" 1780219711 5948560 0aec8816adc30b13539f41021b946308 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
   "open-curve.sty" 1790744062.24606 4094 763e183321a1c090255f2fc14d235c62 ""
-  "output/resume.aux" 1791210546.44197 153 dde49dbab0b045423e88e3a712a43c67 "xelatex"
-  "output/resume.out" 1791210546.41082 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "resume.tex" 1791210240.13111 1411 a14bca9a6928c09c10a4586e076b1e7e ""
+  "output/resume.aux" 1792915464.53339 153 dde49dbab0b045423e88e3a712a43c67 "xelatex"
+  "output/resume.out" 1792915464.49911 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "resume.tex" 1792895419.50022 1426 dbde530249a6730a007fd6366f3dc4c5 ""
   "sections/education.tex" 1790733380.87426 590 bdfca5c29ec783eefaafb3db2a8c193d ""
-  "sections/projects.tex" 1791210543.04478 4422 0fa246621b101fdf44ad4069f18459ef ""
+  "sections/projects.tex" 1792915454.08501 4419 a351ced0706892db0acc8ee6b89d276f ""
   "sections/skills.tex" 1791210267.91133 588 bc99e37904f23f9cd9d96bdcd3eb49e0 ""
   (generated)
   "output/resume.aux"
