@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.31)  25 OCT 2026 16:04
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.31)  26 OCT 2026 10:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -950,12 +950,12 @@ Package rerunfilecheck Info: File `resume.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33744 strings out of 468168
- 753084 string characters out of 5432815
- 1193214 words of memory out of 5000000
- 61950 multiletter control sequences out of 15000+600000
+ 33732 strings out of 468168
+ 752308 string characters out of 5432815
+ 1191214 words of memory out of 5000000
+ 61938 multiletter control sequences out of 15000+600000
  629645 words of font info for 101 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  113i,8n,110p,451b,334s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on output/resume.xdv (1 page, 39612 bytes).
+Output written on output/resume.xdv (1 page, 38380 bytes).

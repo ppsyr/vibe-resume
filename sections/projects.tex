@@ -2,11 +2,10 @@
 
 \cvprojectheading{Poirot：可持久化的深度研究 Agent 内核}{Python, LangGraph, SQLite, RAG, Docker}{\textbf{2026.08--2026.10}}
 \cvdescription{开发面向长期研究任务的 Agent 系统，基于 LangGraph 管理推理与工具调用，并提供可恢复会话、专家协作、安全文件访问和历史报告检索；支持 CLI/TUI 交互。}
-\cvitem{\textbf{ReAct 运行架构：}基于 LangGraph 实现 ReAct 推理与工具调用主流程，将上下文治理、记忆召回、Skill 注入、沙箱、工具、多智能体与报告生成等功能封装为\textbf{22 个可插拔的中间件}；上下文按占用率\textbf{分级治理}：40\% 持久化超长的工具输出、80\% 摘要旧消息并保留最近 6 轮、90\% 剥离工具调用强制收尾，支持长任务持续运行。}
-\cvitem{\textbf{Skill 自进化与评估：}搭建存储、演化、评估\textbf{三层架构}：\textbf{存储层}按版本 DAG 组织 Skill，保留历史版本并支持回退；\textbf{演化层}由运行指标触发、LLM 生成候选，经规则评分后决定晋升或回退；\textbf{评估层}从任务完成质量与输出规范两方面打分。}
-\cvitem{\textbf{多 Agent 专家协作：}通过 MCP 接入 Codex、Claude 等专家 Agent，\textbf{按任务委派并汇总结果}，为每次调用保留\textbf{独立上下文}；记录专家表现，用评估结果调整协作策略，效果退化时回退版本。}
+\cvitem{\textbf{ReAct 运行架构：}基于 LangGraph 实现 ReAct 推理与工具调用主流程，将上下文治理、记忆召回、Skill 注入、沙箱、工具、多智能体与报告生成等功能封装为\textbf{22 个可插拔的中间件}。}
+\cvitem{\textbf{上下文治理：}\textbf{上下文}按占用率分级治理：40\% 持久化超长的工具输出、80\% 生成结构化摘要并保留最近 6 轮对话、90\% 剥离工具调用强制收尾，\textbf{支持长任务持续运行}；\textbf{长期记忆}按情景、语义、程序记忆召回，配合艾宾浩斯衰减与遗忘淘汰、BM25 混合检索与写回强化，\textbf{抑制记忆膨胀}；可将历史会话保存为摘要、概览和会话副本\textbf{三层报告}，使用 SQLite FTS5 全文检索摘要或命令直接定位摘要、并注入概览，再按需注入会话副本，\textbf{减少无关历史进入上下文}。}
+\cvitem{\textbf{多 Agent 专家协作：}通过 MCP 接入 Codex、Claude、Pi 等专家 Agent，\textbf{按任务委派并汇总结果}，为每次调用保留\textbf{独立上下文}；记录专家表现，用评估结果调整协作策略，效果退化时回退版本。}
 \cvitem{\textbf{沙箱与会话隔离：}提供 \textbf{Local 与 Docker 两种沙箱}，对文件工具统一执行路径校验和读写权限检查；将会话绑定项目目录，恢复或切换会话时同步更新可访问范围，防止文件引用和工具操作越界。}
-\cvitem{\textbf{分层报告与渐进式注入：}将历史会话保存为\textbf{概览、摘要和会话副本三层报告}；可使用 SQLite FTS5 全文检索定位概览，也可通过命令直接注入摘要，再根据大模型需展开相关知识与对话轮次注入会话副本，减少无关历史进入上下文。}
 
 \cvprojectheading{PlugAgent：可插拔的 Agent 运行时}{Java, Spring Boot, DDD 架构, Java SPI, ClassLoader}{\textbf{2026.04--2026.07}}
 \cvdescription{基于 Java 17 与 Spring Boot 3.3 实现的模块化 Agent 运行时，以接口-适配器架构将组件变成统一的可替换机制，支持将现有 Java 系统零代码改造、以插件形式拓展接入 Agent 能力。}
