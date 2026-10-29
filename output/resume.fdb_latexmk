@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1793095390.10601 "output/resume.xdv" "output/resume.pdf" "output/resume" 1793095390.59833 0
-  "output/resume.xdv" 1793095390.07032 38476 8198a4c685f96ef1e9755553dca46dd1 "xelatex"
+["xdvipdfmx"] 1793179894.11305 "output/resume.xdv" "output/resume.pdf" "output/resume" 1793179894.61515 0
+  "output/resume.xdv" 1793179894.0765 38308 ffb73540fcfefdbbc8501d56019c3b6a "xelatex"
   (generated)
   "output/resume.pdf"
   (rewritten before read)
-["xelatex"] 1793095389.13687 "resume.tex" "output/resume.xdv" "resume" 1793095390.59741 0
+["xelatex"] 1793179893.04794 "resume.tex" "output/resume.xdv" "resume" 1793179894.61423 0
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
@@ -164,11 +164,11 @@
   "/usr/local/texlive/2026/texmf-var/web2c/xetex/xelatex.fmt" 1780219711 5948560 0aec8816adc30b13539f41021b946308 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
   "open-curve.sty" 1790744062.24606 4094 763e183321a1c090255f2fc14d235c62 ""
-  "output/resume.aux" 1793095390.06969 153 dde49dbab0b045423e88e3a712a43c67 "xelatex"
-  "output/resume.out" 1793095390.03963 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "output/resume.aux" 1793179894.07586 153 dde49dbab0b045423e88e3a712a43c67 "xelatex"
+  "output/resume.out" 1793179894.04335 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
   "resume.tex" 1792895419.50022 1426 dbde530249a6730a007fd6366f3dc4c5 ""
   "sections/education.tex" 1792982990.74711 590 a75933fc5771d4ce55e0456255b168a7 ""
-  "sections/projects.tex" 1793095385.83949 4206 b0196bd947ae1922cc8467f61d7f3cac ""
+  "sections/projects.tex" 1793179891.09597 4187 06ae6cc61ba1e9daf3b83a063aac3bec ""
   "sections/skills.tex" 1791210267.91133 588 bc99e37904f23f9cd9d96bdcd3eb49e0 ""
   (generated)
   "output/resume.aux"
